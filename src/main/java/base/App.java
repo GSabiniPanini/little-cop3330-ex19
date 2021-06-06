@@ -35,6 +35,50 @@ public class App
 
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
+        App myApp = new App();
+
+        float height = myApp.getheight();
+        float weight = myApp.getweight();
+
+        float bmi = myApp.calcbmi(height, weight);
+
+        myApp.checkrange(bmi);
+    }
+
+    public void checkrange(float bmi)
+    {
+        if(bmi >= 18.5 && bmi <= 25)
+        {
+            System.out.println("You are within the ideal weight range.");
+        }
+        else if(bmi > 25)
+        {
+            System.out.println("You are overweight. You should see your doctor.");
+        }
+        else
+        {
+            System.out.println("You are underweight. You should eat some steak!");
+        }
+    }
+
+    public float calcbmi(float height, float weight)
+    {
+        float bmi = (weight / (height * height)) * 703;
+        System.out.printf("Your BMI is %.1f.%n", bmi);
+        return bmi;
+    }
+
+    public float getweight()
+    {
+        System.out.print("How much do you weigh in pounds? ");
+        float weight = in.nextInt();
+        return weight;
+    }
+
+    public float getheight()
+    {
+        System.out.print("What's your height in inches? ");
+        float height = in.nextInt();
+        return height;
     }
 }
